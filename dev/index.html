@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TWITTOP</title>
+  
+  <link rel="stylesheet" type="text/css" href="index.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container container-main">
+
+    <div class="container container-left">
+
+            <div class="container container-menu">
+
+                    <div class="container container-title">
+                        
+                        <i id="title-icon" class="fa fa-address-card"></i>
+                        <a class="title">Accueil</a>
+                    </div>
+
+                    <div class="container container-buttons">
+                        
+                        <button class="menu-button" type="button" autofocus><i class="fa fa-home"></i> Accueil</button>
+                        <button class="menu-button" type="button"><i class="fa fa-sticky-note"></i> Publications</button>
+                        <button class="menu-button" type="button"><i class="fa fa-cog"></i> Paramètres</button>
+                    </div>
+            </div>
+
+            <div class="container container-subscriptions">
+                    
+            </div>
+
+    </div>
+
+    <div class="container container-center">
+        
+            <div class="container container-publish">
+
+                    <div class="container container-write">
+
+                        <textarea id="publish-message" placeholder="Ecrire un message..."></textarea>
+                        
+                        <div class="container container-publish-message-buttons">
+                            
+                                <div class="container container-publish-message-buttons-left">
+                                    
+                                    <button class="publish-message-buttons" type="button"><i class="fa fa-paperclip"></i></button>
+                                    <button class="publish-message-buttons" type="button"><i class="fa fa-cog"></i></button>
+                                </div>
+
+                                <div class="publish-button-container"><a class="publish-button" href="#">Publier</a></div>
+                        </div>
+                    </div>
+
+                    <div class="container container-add-subscriptions">
+
+                        <div class="keyword-container">
+                            <input class="tag keyword-input-1" type="text" minlength="3" maxlength="16" size="4" placeholder="Clef">
+                            <input class="tag keyword-input-2" type="text" minlength="3" maxlength="16" size="4" placeholder="Valeur">
+                        </div>
+                        <button class="add-subscription-button" type="button"><i class="fa fa-plus-circle"></i></button>
+                        
+                    </div>
+            </div>
+
+            <div class="container container-timeline">
+    
+            </div>
+    </div>
+
+  </div>
+
+
+  <!-- Script principal de la page -->
+  <script src="index.js"></script>
+</body>
+
+</html>
