@@ -88,7 +88,6 @@ generatePublication = (id, pseudo, date, content, tags) => {
 $('body').on("keydown", ".pseudo", (event) => {
     addCharToTheBegin(event, "@")
     localStorage.setItem("pseudo", $(".pseudo").val())
-    //resizeInput(event, 10) 
 })
 
 // modification d'un tag du message
@@ -99,7 +98,16 @@ $('body').on("keydown", ".tag", (event) => {
 
 // modification du textarea du message
 $('body').on("keydown", "#publish-message", (event) => {
-    console.log("modif")
+    // Rien à faire pour le moment
+})
+
+// modification du textarea des abonnements
+$('body').on("input", "#subscriptions-textarea", (event) => {
+    
+    let val = $("#subscriptions-textarea").val()
+    let subcriptionsArray = val.split(" ").filter(w => w.match(/^[#@]/))
+
+    localStorage.setItem("subscriptions", val)
 })
 
 // bouton d'ajout de tag au message
@@ -336,9 +344,11 @@ $(document).ready(function() {
     localStorage.setItem("publications", JSON.stringify(publications))
     */
 
+
     // On met un exemple de tag
     $(".keyword-container").append(generateTag())
 
+    // Vérifie que le Web Storage est accessible
     if (typeof(Storage) !== "undefined") {
         
         // Retrouve le pseudo
@@ -361,6 +371,14 @@ $(document).ready(function() {
             }
         } else {
             console.log("No timeline found in Web Storage.")
+        }
+
+        // Retrouve les abonnements
+        let subscriptionsString = localStorage.getItem("subscriptions")
+        if(subscriptionsString) {
+            $("#subscriptions-textarea").val(subscriptionsString)
+        } else {
+            console.log("No subscriptions found in Web Storage.")
         }
     } else {
         console.log("Web Storage is not supported.")
