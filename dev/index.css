@@ -2,8 +2,33 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #616161; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #cccccc; 
+}
+
 .container {
     background-color: #424242;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 .container-main {
@@ -18,7 +43,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    width: 15vw;
+    max-width: 20vw;
 }
 
 .container-menu {
@@ -34,10 +59,30 @@
 
     display: flex;
     flex-direction: row;
-    font-size: 30px;
-    color: white;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    margin-left: 10px;
+}
+
+.pseudo {
+
+    border: none;
+    background-color: inherit;
+    font-size: 1.5em;
+    color: grey;
+}
+
+#button-modify-pseudo {
+
+    font-size: 1.5em;
+    background-color: inherit;
+    border: none;
+    color: white;
+}
+
+#button-modify-pseudo:hover {
+    cursor: pointer;
+    color: black;
 }
 
 .container-buttons {
@@ -55,10 +100,11 @@
 
 .container-center {
 
-    flex-grow: 5;
+    flex-grow: 3;
     border-left: solid 1px black;
     display: flex;
     flex-direction: column;
+    max-width: 80vw;
 }
 
 .container-publish {
@@ -67,7 +113,8 @@
     border-bottom: solid 5px #616161;
     display: flex;
     flex-direction: row;
-    max-height: 40vh;
+    min-height: 30vh;
+    padding-bottom: 30px;
 }
 
 .container-write {
@@ -153,6 +200,51 @@
 .container-timeline {
 
     flex-grow: 10;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.publication {
+    margin: 20px;
+    border-bottom: solid 1px #616161;
+}
+
+.publication-pseudo {
+    color: #ff9800;
+}
+
+.publication-date {
+    color: white;
+}
+
+.publication-content {
+    color: white;
+}
+
+.publication-tag {
+    color: #ffeb3b;
+} 
+
+.delete-publication-button {
+    border-radius: 50%;
+    font-size: 25px;
+    background-color: #212121;
+    border: 2px solid #212121;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    transition: .2s;
+}
+
+.delete-publication-button:hover {
+    color: #f44336; 
+    cursor: pointer;
+}
+
+.publication-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .menu-button {
@@ -164,7 +256,7 @@
     margin-top: 5px;
     transition: .2s;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.2em;
     color: white;
     text-align: left;
     padding-left: 20px;   
@@ -173,19 +265,6 @@
 .menu-button:hover {
 
     background-color: #757575;
-    cursor: pointer;
-}
-
-.menu-button:active, .menu-button:focus {
-
-    background-color: #9e9e9e;
-}
-
-#title-icon:hover {
-
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
     cursor: pointer;
 }
 
@@ -211,28 +290,11 @@
     border-radius: 15px;
 }
 
-.keyword-container:hover {
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
-}
-
-.keyword-input-1 {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    min-width: 60px;
-    background-color: #9e9e9e;
-    border: 1px solid white;
-    padding-left: 5px;
-    outline: none;
-}
-
-.keyword-input-2 {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    min-width: 60px;
-    background-color: #757575;
-    border: 1px solid white;
-    padding-left: 5px;
-    outline: none;
+.tag {
+    border: none;
+    background-color: inherit;
+    color: #ffeb3b;
+    font-size: 18px;
 }
 
 .add-subscription-button {
@@ -248,22 +310,16 @@
     border-color: black;
     cursor: pointer;
 }
-  
-@keyframes shake {
 
-    10%, 90% {
-        transform: translate3d(-1px, 0, 0);
-    }
+.container-parameters {
+    padding: 10px;
+}
 
-    20%, 80% {
-        transform: translate3d(2px, 0, 0);
-    }
+#server-address-label {
+    color:white;
+}
 
-    30%, 50%, 70% {
-        transform: translate3d(-4px, 0, 0);
-    }
-
-    40%, 60% {
-        transform: translate3d(4px, 0, 0);
-    }
+#attach-file {
+    border-radius: 10px;
+    color: white;
 }

@@ -7,76 +7,116 @@
   
   <link rel="stylesheet" type="text/css" href="index.css"/>
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 </head>
 
 <body>
 
-  <div class="container container-main">
+    <!-- Templates d'un tag -->
+    <template id="template-tag">
+        <input class="tag" type="text" minlength="3" maxlength="16" size="8" placeholder="#etiquette">
+    </template>
 
-    <div class="container container-left">
+    <!-- Template d'une publication -->
+    <template id="template-publication">
+        <div class="publication">
 
-            <div class="container container-menu">
+            <!-- Id de la publication -->
+            <a class="publication-id" hidden></a>
 
-                    <div class="container container-title">
-                        
-                        <i id="title-icon" class="fa fa-address-card"></i>
-                        <a class="title">Accueil</a>
-                    </div>
-
-                    <div class="container container-buttons">
-                        
-                        <button class="menu-button" type="button" autofocus><i class="fa fa-home"></i> Accueil</button>
-                        <button class="menu-button" type="button"><i class="fa fa-sticky-note"></i> Publications</button>
-                        <button class="menu-button" type="button"><i class="fa fa-cog"></i> Paramètres</button>
-                    </div>
+            <div class="publication-title">
+                <a class="publication-pseudo"><!-- Pseudo --></a>
+                <a>·</a>
+                <a class="publication-date"><!-- Date --></a>
             </div>
-
-            <div class="container container-subscriptions">
-                    
+            <br>
+            <div class="publication-content">
+                <!-- Contenu du message (texte) -->
             </div>
+            <br>
+            <div class="publication-bottom">
+                <div class="publication-tag">
+                    <!-- Tags du messages -->
+                    <!-- Exemple : 
+                    <a>#etiquette</a>
+                     -->
+                </div>
+                <button class="delete-publication-button" type="button"><i class="fa fa-trash"></i></button>
+            </div>
+        </div>
+    </template>
 
-    </div>
+    <!-- Debut de l'application -->
+    <div class="container container-main">
 
-    <div class="container container-center">
-        
-            <div class="container container-publish">
+        <div class="container container-left">
 
-                    <div class="container container-write">
+                <div class="container container-menu">
 
-                        <textarea id="publish-message" placeholder="Ecrire un message..."></textarea>
-                        
-                        <div class="container container-publish-message-buttons">
+                        <div class="container container-title">
+                                                    
+                            <input class="pseudo" type="text" minlength="3" maxlength="8" size="8" placeholder="@pseudo" disabled>
+                            <button id="button-modify-pseudo" type="button"><i id="icon-modify-pseudo-button" class="fa fa-cog"></i></button> 
+                        </div>
+
+                        <div class="container container-buttons">
                             
-                                <div class="container container-publish-message-buttons-left">
-                                    
-                                    <button class="publish-message-buttons" type="button"><i class="fa fa-paperclip"></i></button>
-                                    <button class="publish-message-buttons" type="button"><i class="fa fa-cog"></i></button>
-                                </div>
-
-                                <div class="publish-button-container"><a class="publish-button" href="#">Publier</a></div>
+                            <button id="button-home" class="menu-button" type="button"><i class="fa fa-home"></i> Accueil</button>
+                            <button id="button-publications" class="menu-button" type="button"><i class="fa fa-sticky-note"></i> Publications</button>
+                            <button id="button-settings" class="menu-button" type="button"><i class="fa fa-cog"></i> Paramètres</button>
                         </div>
-                    </div>
+                </div>
 
-                    <div class="container container-add-subscriptions">
-
-                        <div class="keyword-container">
-                            <input class="tag keyword-input-1" type="text" minlength="3" maxlength="16" size="4" placeholder="Clef">
-                            <input class="tag keyword-input-2" type="text" minlength="3" maxlength="16" size="4" placeholder="Valeur">
-                        </div>
-                        <button class="add-subscription-button" type="button"><i class="fa fa-plus-circle"></i></button>
+                <div class="container container-subscriptions">
                         
-                    </div>
-            </div>
+                </div>
 
-            <div class="container container-timeline">
-    
-            </div>
+        </div>
+
+        <div class="container container-center">
+            
+                <div class="container container-publish">
+
+                        <div class="container container-write">
+
+                            <textarea id="publish-message" placeholder="Ecrire un message..."></textarea>
+                            
+                            <div class="container container-publish-message-buttons">
+                                
+                                    <div class="container container-publish-message-buttons-left">
+                                        
+                                        <input id="attach-file" type="file" id="file-input" >
+                                    </div>
+
+                                    <div id="button-publish" class="publish-button-container"><a class="publish-button" href="#">Publier</a></div>
+                            </div>
+                        </div>
+
+                        <div class="container container-add-subscriptions">
+
+                            <div class="keyword-container">
+                                <!-- Ici ironts les tag du message -->
+                            </div>
+                            <button class="add-subscription-button" type="button"><i class="fa fa-plus-circle"></i></button>
+                            
+                        </div>
+                </div>
+
+                <div class="container container-timeline">
+                    
+                    <!-- Ici iront les publications (soit la timeline, soit les publications de l'utilisateur) -->
+                </div>
+
+                <div class="container-parameters" hidden>
+
+                    <label id="server-address-label" for="address">Adresse du serveur : </label>
+                    <input id="server-address-input" type="text" id="address" maxlength="15" size="10">
+                </div>
+        </div>
+
     </div>
-
-  </div>
 
 
   <!-- Script principal de la page -->
